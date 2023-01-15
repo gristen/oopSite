@@ -26,7 +26,7 @@ $(document).ready(function ()
                 {
                     var html =  ' <div class="alert alert-danger" role="alert">' + message_arr.value + '</div>';
                     $('.msg').html(html);
-                    
+
                 }
 
             });
