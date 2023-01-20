@@ -5,15 +5,9 @@ namespace app\Views;
 class Views
 {
 
-    public static $arr = [];
-
-    public static function resultRegister($message)
+    function generate($content_view, $template_view, $data = null)
     {
-      self::$arr[] =
-          [
-              "msg"=>'<div class="alert alert-primary" role="alert">
-                            A simple primary alert—check it out!
-                      </div>'
-          ];
+        echo "DAUN";
     }
+
 }

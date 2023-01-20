@@ -1,6 +1,8 @@
 <?php
+
 use app\Services\Page;
 use app\Views\Views;
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -9,7 +11,7 @@ use app\Views\Views;
 <?php Page::part("nav"); ?>
 <div class="container">
 
-    <form method="post" id="FormReg" action="" enctype="multipart/form-data" >
+    <form method="post" id="FormReg" action="../../app/controllers/UsersController.php" enctype="multipart/form-data" >
         <div class="row">
             <div class="col-lg-6 mt-5">
                 <img src="https://uploads.turbologo.com/uploads/design/preview_image/807421/preview_image20211222-743-19qazwo.png" alt="">

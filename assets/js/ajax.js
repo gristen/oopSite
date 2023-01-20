@@ -3,35 +3,47 @@ $(document).ready(function ()
     $('#register').on('click',function (event)
     {
         event.preventDefault();
-        var fd = new FormData(document.getElementById("FormReg"));
+        const fd = new FormData(document.getElementById("FormReg"));
 
-        var email = $('#email').val();
-        fd.append("test",true);
+       // let avatar = document.getElementById("avatar")
+
+        let email = $('#email').val();
+        let username = $('#username').val();
+        let password = $('#password').val();
+        let pass_conf = $('#pass_conf').val();
+
         fd.append('email',email);
+        fd.append('username',username);
+        fd.append('password',password);
+        fd.append('pass_conf',pass_conf);
+
+
 
         $.ajax
         ({
             method: "POST",
             processData: false,
             contentType: false,
-            url: "../../app/controllers/Auth.php",
-            data: fd,
+            url: "../../app/controllers/UsersController.php",
+            data: fd
 
         })
             .done(function( msg )
             {
-                var message_arr = jQuery.parseJSON(msg);
 
-                if (message_arr.key == "error")
+                let message = jQuery.parseJSON(msg);
+
+                if (message.key == "error")
                 {
-                    var html =  ' <div class="alert alert-danger" role="alert">' + message_arr.value + '</div>';
+                    console.log("ошибка")
+                    let html =  ' <div class="alert alert-danger" role="alert">' + message.value + '</div>';
                     $('.msg').html(html);
-
                 }
+
+
 
             });
 
     })
 
 })
-
