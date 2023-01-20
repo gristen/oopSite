@@ -3,6 +3,7 @@
 namespace app\controllers;
 require_once "../../vendor/autoload.php";
 use  app\Models\UsersModel;
+use app\Services\App;
 
 if (!empty($_POST))
 {
@@ -17,5 +18,7 @@ class UsersController
     {
         UsersModel::sign($_POST ,$_FILES);
     }
+
+
 
 }

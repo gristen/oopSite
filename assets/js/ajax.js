@@ -30,14 +30,17 @@ $(document).ready(function ()
         })
             .done(function( msg )
             {
-
+                console.log(msg);
                 let message = jQuery.parseJSON(msg);
 
                 if (message.key == "error")
                 {
-                    console.log("ошибка")
-                    let html =  ' <div class="alert alert-danger" role="alert">' + message.value + '</div>';
+                    let html =  '<div class="alert alert-danger" role="alert">' + message.value + '</div>';
                     $('.msg').html(html);
+                }else
+                {
+                    alert(msg);
+
                 }
 
 
