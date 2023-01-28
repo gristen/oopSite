@@ -5,9 +5,9 @@ namespace app\Views;
 class Views
 {
 
-    function generate($content_view, $template_view, $data = null)
+    function generate($content_view)
     {
-        echo "DAUN";
+        include 'views/pages/'.$content_view;
     }
 
 }

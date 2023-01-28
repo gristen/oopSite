@@ -11,6 +11,8 @@ class UsersModel
     {
         $Message = [];
 
+
+
         if (empty($userData['email'])||empty($userData['username'])||empty($userData['password'])||empty($userData['pass_conf'])||empty($userAvatar['avatar']['name']))
         {
             $Message = ["key"=>"error","value"=>"Нужно заполнить все поля"];
@@ -46,7 +48,7 @@ class UsersModel
 
     }
 
-    private static function CheckEmailUser(string $email): int
+    private static function CheckEmailUser(string $email)
     {
         $db =  App::connect();
         $result = $db->prepare("SELECT email FROM users WHERE email = :email");
@@ -54,6 +56,7 @@ class UsersModel
             "email"=>$email,
         ]);
         return $result->rowCount();
+
     }
     public static function CheckEmailValidate($email)
     {

@@ -2,15 +2,20 @@
 
 namespace app\Services;
 
+use app\controllers\homeController;
+use app\controllers\loginController;
+
 class Router
 {
     private static $list = [];
 
-    public static function page($uri, $pagename)
+    public static function page($uri, $pagename, $class,$method)
     {
         self::$list[] = [
             "url" => $uri,
-            "page" => $pagename
+            "page" => $pagename,
+            "class"=>$class,
+            "method"=>$method,
         ];
 
     }
@@ -48,39 +53,40 @@ class Router
 
             if ($route['url'] === '/' . $q)
             {
+                    $action = new $route["class"];
+                    $method = $route["method"];
+                    $action->$method();
 
-                if ($route["post" ]=== true && $_SERVER["REQUEST_METHOD"] === "POST")
-                {
-
-                    $action = new $route['class'];
-                    $method = $route['method'];
-                    if ($route["formdata"] && $route["files"])
-                    {
-                        $action->$method($_POST,$_FILES);
-
-                    }elseif ($route["formdata"] && !$route["files"])
-                    {
-                        $action->$method($_POST);
-
-                    }elseif (!$route["formdata"] && !$route["files"])
-                    {
-
-                        $action->$method();
-
-                    }
                     die();
-                }else
-                {
-                    require_once "views/pages/" . $route['page'] . ".php";
-                    die();
-                }
 
             }
 
 
+
+
+
         }
-//        self::not_found_page();
+
     }
+/*    public  static  function start()
+    {
+        $controller_names = 'loginController.php';
+        $action_name = 'action_index';
+        $q = $_GET["q"];
+        foreach (self::$list as $route) {
+            $controller_name = $route['page'];
+            $controller_path = "app/controllers/" . $controller_name . 'Controller.php';
+            if (file_exists($controller_path)) {
+
+                $controller = new $controller_names;
+                $action = $action_name;
+                $controller->$action();
+            }else{
+                self::not_found_page();
+            }
+
+        }
+    }*/
 
 }
 

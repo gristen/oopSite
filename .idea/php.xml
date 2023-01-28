@@ -8,4 +8,10 @@
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
+  <component name="PhpStepFilterConfiguration">
+    <skipped_functions>
+      <skipped_function name="app\Services\Router::start" />
+      <skipped_function name="app\Services\Router::enable" />
+    </skipped_functions>
+  </component>
 </project>
