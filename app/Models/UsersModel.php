@@ -13,6 +13,8 @@ class UsersModel
 
 
 
+
+
         if (empty($userData['email'])||empty($userData['username'])||empty($userData['password'])||empty($userData['pass_conf'])||empty($userAvatar['avatar']['name']))
         {
             $Message = ["key"=>"error","value"=>"Нужно заполнить все поля"];

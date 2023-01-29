@@ -53,11 +53,9 @@ class Router
 
             if ($route['url'] === '/' . $q)
             {
-                    $action = new $route["class"];
-                    $method = $route["method"];
-                    $action->$method();
+                include "views/pages/register.php";
 
-                    die();
+
 
             }
 

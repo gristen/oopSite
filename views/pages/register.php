@@ -10,7 +10,7 @@ use app\Views\Views;
 <body>
 <?php Page::part("nav"); ?>
 <div class="container">
-<?= __DIR__?>
+
     <form method="post" id="FormReg" action="../../app/controllers/UsersController.php" enctype="multipart/form-data" >
         <div class="row">
             <div class="col-lg-6 mt-5">
