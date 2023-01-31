@@ -12,10 +12,7 @@ class Controller
     function __construct()
     {
         $this->view = new Views();
-        $this->test();
+
     }
-    public function test()
-    {
-        UsersController::signUP();
-    }
+
 }

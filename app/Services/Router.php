@@ -3,7 +3,8 @@
 namespace app\Services;
 
 use app\controllers\homeController;
-use app\controllers\loginController;
+
+use app\controllers\UsersController;
 
 class Router
 {
@@ -20,15 +21,14 @@ class Router
 
     }
 
-    public static function post($uri, $class, $method, $formdata = false, $files = false)
+    public static function post( $url,$class, $method)
     {
         self::$list[] = [
-            "url" => $uri,
+            "url" => $url,
             "class" => $class,
             "method" => $method,
-            "post" => true,
-            "formdata" => $formdata,
-            "files" => $files,
+            "post"=>true
+
         ];
     }
 
@@ -51,19 +51,22 @@ class Router
         foreach (self::$list as $route)
         {
 
+
+
+
             if ($route['url'] === '/' . $q)
             {
-                include "views/pages/register.php";
 
-
+                $class = new $route['class'];
+                $method = $route['method'];
+                $class->$method();
 
             }
 
 
 
-
-
         }
+
 
     }
 /*    public  static  function start()

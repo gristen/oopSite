@@ -24,14 +24,14 @@ $(document).ready(function ()
             method: "POST",
             processData: false,
             contentType: false,
-            url: "../../app/controllers/UsersController.php", //
+            url: "../../app/Services/ajax.php", //
             data: fd
 
         })
             .done(function( msg )
             {
                 console.log(msg);
-                let message = jQuery.parseJSON(msg);
+               /* let message = jQuery.parseJSON(msg);
 
                 if (message.key == "error")
                 {
@@ -41,7 +41,7 @@ $(document).ready(function ()
                 {
                     alert(msg);
 
-                }
+                }*/
 
 
 

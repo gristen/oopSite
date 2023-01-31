@@ -1,27 +1,25 @@
 <?php
 
 namespace app\controllers;
-
-include "../../vendor/autoload.php";
-
+use app\controllers\Controller;
 use  app\Models\UsersModel;
 use app\Services\App;
 
-if (!empty($_POST))
-{
-    UsersController::signUP();
-}
 
 
-class UsersController
+class UsersController extends Controller
 {
 
+    public function index_register()
+    {
+        $this->view->generate("register.php");
+    }
 
 
-    public static function signUP()
+    public  function signUP()
     {
 
-        UsersModel::sign($_POST ,$_FILES);
+     echo "sign";
     }
 
 
