@@ -50,7 +50,7 @@ use app\Views\Views;
 
 
 
-<!--<script src="../../assets/js/ajax.js"></script>-->
+<script src="../../assets/js/ajax.js"></script>
 
 
 </body>

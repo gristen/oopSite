@@ -24,7 +24,7 @@ $(document).ready(function ()
             method: "POST",
             processData: false,
             contentType: false,
-            url: "../../app/Services/ajax.php", //
+            url: "../../app/router/routes.php", //
             data: fd
 
         })
