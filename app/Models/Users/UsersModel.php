@@ -1,19 +1,16 @@
 <?php
 
-namespace app\Models;
+namespace app\Models\Users;
 
-use app\controllers\UsersController;
 use app\Services\App;
 
 class UsersModel
 {
-    public static function sign(array $userData , array $userAvatar)
+
+
+    public  function sign(array $userData , array $userAvatar)
     {
         $Message = [];
-
-
-
-
 
         if (empty($userData['email'])||empty($userData['username'])||empty($userData['password'])||empty($userData['pass_conf'])||empty($userAvatar['avatar']['name']))
         {
@@ -41,7 +38,7 @@ class UsersModel
         }
 
         if (!empty($Message))
-            echo json_encode($Message);
+            return false;
         else
         {
             echo "отправил";

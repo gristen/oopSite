@@ -1,11 +1,9 @@
 <?php
 
 namespace app\controllers;
-use app\controllers\Controller;
-use  app\Models\UsersModel;
-use app\Services\App;
 
 
+use app\Models\Users\UsersModel;
 
 class UsersController extends Controller
 {
@@ -18,8 +16,10 @@ class UsersController extends Controller
 
     public  function signUP()
     {
-
-     echo "sign";
+        echo "отправил";
+        $Model = new UsersModel();
+        $da = $Model->sign($_POST,$_FILES);
+       var_dump($da);
     }
 
 

@@ -44,7 +44,7 @@ class Router
 
     public static function enable()
     {
-
+        echo "enable";
         $q = $_GET["q"];
 
 
