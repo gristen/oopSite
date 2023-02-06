@@ -2,7 +2,7 @@
 
 namespace app\Models\Users;
 
-use app\Services\App;
+use app\Services\DB;
 
 class UsersModel
 {
@@ -49,7 +49,7 @@ class UsersModel
 
     private static function CheckEmailUser(string $email)
     {
-        $db =  App::connect();
+        $db =  DB::connect();
         $result = $db->prepare("SELECT email FROM users WHERE email = :email");
         $result->execute([
             "email"=>$email,
@@ -64,7 +64,7 @@ class UsersModel
 
     private static function InsertUser($email, $username, $password, $avatar, $status)
     {
-        $db =  App::connect();
+        $db =  DB::connect();
         $query = $db->prepare("INSERT INTO users (email,username,password,avatar,role) VALUES (:email,:username,:password,:avatar,:status)");
         $query->execute([
             "email"=>$email,
