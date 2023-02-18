@@ -6,3 +6,4 @@ git checkout namebr - switch branch
 git branch - check branch
 git checkout -b namebranch - create and move to a new branch
 asdasdasdasdфывдл
+asd
