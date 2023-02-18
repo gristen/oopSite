@@ -19,10 +19,10 @@ class UsersController extends Controller
     {
      
         $this->view->generate("register.php");
-        echo "отправил";
+       //echo "отправил";
         $Model = new UsersModel();
         $da = $Model->sign($_POST,$_FILES);
-       var_dump($da);
+     //  var_dump($da);
     }
 
 
