@@ -3,75 +3,130 @@
 namespace app\Models\Users;
 
 use app\Services\DB;
+use app\Exceptions\InvalidArgumentException;
 
 class UsersModel
 {
 
+    protected $nickname;
+    protected $email;
+    protected $isConfirmed;
+    protected $role;
+    protected $passwordHash;
+    protected $authToken;
+    protected $CreatedAt;
 
-    public  function sign(array $userData , array $userAvatar)
+    /**
+     * @return mixed
+     */
+    public function getNickname()
     {
-        $Message = [];
+        return $this->nickname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsConfirmed()
+    {
+        return $this->isConfirmed;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPasswordHash()
+    {
+        return $this->passwordHash;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAuthToken()
+    {
+        return $this->authToken;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->CreatedAt;
+    }
+
+    public function active():void
+    {
+        $this->isConfirmed = true;
+
+    }
+
+
+    public static  function sign(array $userData , array $userAvatar)
+    {
+
 
         if (empty($userData['email'])||empty($userData['username'])||empty($userData['password'])||empty($userData['pass_conf'])||empty($userAvatar['avatar']['name']))
         {
-            $Message = ["key"=>"error","value"=>"Нужно заполнить все поля"];
+            throw new InvalidArgumentException('Не передан nickname');
 
         }elseif (empty($userAvatar['avatar']['name']))
         {
-            $Message = ["key"=>"error","value"=>"Выберите аватар"];
+            throw new InvalidArgumentException('Не передан avatar');
 
         }elseif (mb_strlen($userData['password']) < 5)
         {
-            $Message = ["key"=>"error","value"=>"Пароль должен содержать больше 5 символов."];
+            throw new InvalidArgumentException('больше 5 ');
 
         }elseif (mb_strlen($userData['email'])<10)
         {
-            $Message = ["key"=>"error","value"=>"Емайл должен содержать больше 10 символов."];
+            throw new InvalidArgumentException('емайл меньше 10');
 
-        }elseif(self::CheckEmailUser($userData['email']))
-        {
-            $Message = ["key"=>"error","value"=>"Данный емайл уже зарегестрирован."];
-
-        }elseif (self::CheckEmailValidate($userData['email']) === false)
-        {
-            $Message = ["key"=>"error","value"=>"Некорректный Емайл."];
         }
 
-        if (!empty($Message))
-            return false;
-        else
-        {
-            echo "отправил";
-            self::InsertUser($userData['email'],$userData['username'],$userData['password'],$userAvatar['avatar']['name'],1);
-        }
+       $user = new UsersModel();
+        $user->nickname = $userData['username'];
+        $user->email = $userData['email'];
+        $user->passwordHash = password_hash($userData['password'],PASSWORD_DEFAULT);
+        $user->isConfirmed = false;
+        $user->role = '1';
+        $user->authToken = sha1(random_bytes(100)) . sha1(random_bytes(100));
+        return $user;
+
+
 
     }
 
-    private static function CheckEmailUser(string $email)
+    private static function InsertUser($nickname,$email,$pass,$conf,$role,$token)
     {
         $db =  DB::connect();
-        $result = $db->prepare("SELECT email FROM users WHERE email = :email");
-        $result->execute([
-            "email"=>$email,
-        ]);
-        return $result->rowCount();
-
-    }
-    public static function CheckEmailValidate($email)
-    {
-      return filter_var($email,FILTER_VALIDATE_EMAIL);
-    }
-
-    private static function InsertUser($email, $username, $password, $avatar, $status)
-    {
-        $db =  DB::connect();
-        $query = $db->prepare("INSERT INTO users (email,username,password,avatar,role) VALUES (:email,:username,:password,:avatar,:status)");
+        $query = $db->prepare("INSERT INTO users (email,username,password,avatar,auth_token,role,is_confirmed) VALUES (:email,:username,:password,:avatar,:token,:role,:is_confirmed)");
         $query->execute([
             "email"=>$email,
-            "username"=>$username,
-            "password"=>password_hash($password,PASSWORD_DEFAULT),
-            "avatar"=>$avatar,
-            "status"=>$status,
+            "username"=>$nickname,
+            "password"=>$pass,
+            "avatar"=>"avatar",
+            "token"=>$token,
+            "role"=>$role,
+            "is_confirmed"=>$conf,
+
         ]);
 
     }

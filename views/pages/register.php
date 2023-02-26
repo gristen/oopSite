@@ -10,8 +10,10 @@ use app\Views\Views;
 <body>
 <?php Page::part("nav"); ?>
 <div class="container">
-
-    <form method="post" id="FormReg" action="register/auth" enctype="multipart/form-data" >
+    <?php if (!empty($error)): ?>
+        <div style="background-color: red;padding: 5px;margin: 15px"><?= $error ?></div>
+    <?php endif; ?>
+    <form method="post" id="FormReg" action="register" enctype="multipart/form-data" >
         <div class="row">
             <div class="col-lg-6 mt-5">
                 <img src="https://uploads.turbologo.com/uploads/design/preview_image/807421/preview_image20211222-743-19qazwo.png" alt="">

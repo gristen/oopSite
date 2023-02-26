@@ -22,6 +22,10 @@ class DB
 
         return $sth->fetchAll();
     }
+   /* public function insert ($sql )
+    {
+        $sth = $this->pdo->prepare($sql);
+    }*/
 }
 
 
