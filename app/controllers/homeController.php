@@ -12,13 +12,15 @@ class homeController extends Controller
 
     public function action()
     {
-        /*$db =  DB::connect();
-        $q = $db->prepare("SELECT * FROM Film");
-        $q->execute();*/
-       // $films = $q->fetchAll(PDO::FETCH_ASSOC);
-      //  var_dump($films);
+        $db = new DB;
+        $q = $db->pdo->prepare("SELECT * FROM Film");
+        $q->execute();
+        $films = $q->fetchAll(\PDO::FETCH_ASSOC);
 
-        $this->view->generate("home.php");
+
+        $this->view->generate("home.php",[
+            'films'=>$films,
+        ]);
 
 
     }
