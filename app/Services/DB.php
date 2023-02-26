@@ -4,12 +4,14 @@ namespace app\Services;
 
 class DB
 {
-    private $pdo;
+    public $pdo;
+
+
 
     public function __construct()
     {
-        $user = "root";
-        $pass = "";
+        $user = "mysql";
+        $pass = "mysql";
 
         $this->pdo = new \PDO('mysql:host=127.0.0.1;dbname=authOOP', $user, $pass);
     }

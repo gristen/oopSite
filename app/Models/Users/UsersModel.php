@@ -108,16 +108,18 @@ class UsersModel
         $user->isConfirmed = false;
         $user->role = '1';
         $user->authToken = sha1(random_bytes(100)) . sha1(random_bytes(100));
+
+
+
+        self::InsertUser($userData['username'],$userData['email'],$user->getPasswordHash(),$user->getIsConfirmed(),$user->getRole(),$user->getAuthToken());
         return $user;
-
-
 
     }
 
     private static function InsertUser($nickname,$email,$pass,$conf,$role,$token)
     {
-        $db =  DB::connect();
-        $query = $db->prepare("INSERT INTO users (email,username,password,avatar,auth_token,role,is_confirmed) VALUES (:email,:username,:password,:avatar,:token,:role,:is_confirmed)");
+        $db = new DB;
+        $query = $db->pdo->prepare("INSERT INTO users (email,username,password,avatar,auth_token,role,is_confirmed) VALUES (:email,:username,:password,:avatar,:token,:role,:is_confirmed)");
         $query->execute([
             "email"=>$email,
             "username"=>$nickname,
