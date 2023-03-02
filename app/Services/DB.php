@@ -10,10 +10,10 @@ class DB
 
     public function __construct()
     {
-        $user = "mysql";
-        $pass = "mysql";
+        $user = "root";
+        $pass = "";
 
-        $this->pdo = new \PDO('mysql:host=127.0.0.1;dbname=authOOP', $user, $pass);
+        $this->pdo = new \PDO('mysql:host=127.0.0.1;dbname=users', $user, $pass);
     }
 
     public function query(string $sql, $params = []): ?array

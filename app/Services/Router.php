@@ -44,9 +44,9 @@ class Router
 
     public static function enable()
     {
-
+            
         $q = $_GET["q"];
-
+        
 
         foreach (self::$list as $route)
         {

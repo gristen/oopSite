@@ -13,7 +13,7 @@ class homeController extends Controller
     public function action()
     {
         $db = new DB;
-        $q = $db->pdo->prepare("SELECT * FROM Film");
+        $q = $db->pdo->prepare("SELECT * FROM film");
         $q->execute();
         $films = $q->fetchAll(\PDO::FETCH_ASSOC);
 
