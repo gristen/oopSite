@@ -13,7 +13,7 @@ class Views
     function generate(string $content_view, array $vars = [],int $code = 200)
     {
         http_response_code($code);
-        extract($this->extraVars);
+       // extract($this->extraVars);
         extract($vars);
         ob_start();
 
