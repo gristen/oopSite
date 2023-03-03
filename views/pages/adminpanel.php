@@ -11,7 +11,7 @@ use app\Views\Views;
 <?php Page::part("nav"); ?>
 <div class="container">
 <div class="line"></div>
-    <?php endif; ?>
+
     
         <p class="aft">Почему ты еще не авторизован!</p>
         <div class="wrapper">
