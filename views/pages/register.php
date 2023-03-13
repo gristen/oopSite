@@ -55,6 +55,7 @@ use app\Views\Views;
             <main class="main">Я фывф</main> 
             <footer class="footer">Я фывф</footer> 
         </div>
+        </div>
         
 
 

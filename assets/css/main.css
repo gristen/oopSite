@@ -53,6 +53,11 @@ p {
    .line {
     border-bottom: 1px solid rgb(255, 255, 255); /* Параметры линии */
    }
+
+   .linet {
+    width: 80%;
+    border-bottom: 5px solid rgb(255, 255, 255); /* Параметры линии */
+   }
 .card p {
     color :#fff;
 }
@@ -147,5 +152,17 @@ height: 200px;
     text-align: center;
 }
 
+.admh{
+margin-top: 15%;
+color: #fff;
+}
+.admhtwo{
+margin-top: 10%;
+color: #fff;
+}
 
 
+.posts{
+    margin: 0;
+    display: flex;
+}

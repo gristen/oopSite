@@ -12,18 +12,56 @@ use app\Views\Views;
 <div class="container">
 <div class="line"></div>
 
-    
-        <p class="aft">Почему ты еще не авторизован!</p>
-        <div class="wrapper">
-            <header class="header">Я фывф</header>  
-            <main class="main">Я фывф</main> 
-            <footer class="footer">Я фывф</footer> 
+<div class="row">
+    <div class="sidebar col-4">
+       <ul>
+        <li>
+            <a href="">Админ панель</a>
+        </li>
+        <li>
+            <a href="">Админ панель</a>
+        </li>
+       </ul> 
+    </div>
+    <div class ="posts col-8">
+        <div class="row">
+         <div class="title col-5">Название</div>
+         <div class="red col-2">Редактировать</div> 
+         <div class="del col-2">Удалить</div>   
         </div>
+        <div class ="row post">
+        <div class="row">
+         <div class="title col-5">сударь</div>
+         <div class="red col-2"><a href=""> edit</a></div> 
+         <div class="del col-2"><a href=""> delete</a></div>   
+        </div>
+
+    </div>
+</div>
+</div>
+
+
+     <!-- <div class="ss col-4">
+     <h1 class="admh">Admin panel</h1>   
+     <div class="linet"></div>
+     <h2 class="admhtwo">Список фильмов</h2>
+     </div>
+
+
+        
+        <div class ="posts col-8">
+        <div class="title col-5">Название</div>
+        <div class="red col-2">Редактировать</div>
+        <div class="del col-2">Удалить</div>
+     </div> -->
+ 
+ 
+       
         
 
 
 <!--<script src="../../assets/js/ajax.js"></script>-->
 
-
+</div>
 </body>
 </html>
